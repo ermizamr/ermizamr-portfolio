@@ -1,4 +1,5 @@
 import { Home, User, Github, Linkedin, Send, BookOpen, Download } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 import { SEOHead } from "./components/SEOHead";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
       <SEOHead />
+      <Analytics />
 
       <div className="min-h-screen bg-background text-foreground">
         <div className="max-w-2xl mx-auto px-6 pb-32">
