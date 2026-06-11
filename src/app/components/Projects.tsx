@@ -12,11 +12,11 @@ const projects = [
     github: "https://github.com/ermizamr/usdent-appeal-builder",
   },
   {
-    name: "E.mslene Educational Platform",
+    name: "E.Mslene Educational Platform",
     date: "January 2025",
     description: "Multi-role academic management system with RBAC for students, teaching staff, and admins. Supports attendance, grades, and registration.",
     tech: ["Django", "React", "PostgreSQL", "RBAC"],
-    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=450&fit=crop",
+    image: "/emslene.jpg",
     live: null,
     github: null,
   },
