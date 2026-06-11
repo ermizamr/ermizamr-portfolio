@@ -25,7 +25,7 @@ const projects = [
     date: "March 2026",
     description: "AI-powered Telegram bot for space, STEM, and Ethiopian tech learners. Context-aware responses with persistent memory via Supabase.",
     tech: ["Python", "Groq API", "Supabase", "Telegram Bot API"],
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=450&fit=crop",
+    image: "/tgteacherbot.jpg",
     live: null,
     github: "https://github.com/ermizamr/ai-tg-bot",
   },
