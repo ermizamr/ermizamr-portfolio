@@ -1,5 +1,4 @@
 import { Home, User, Github, Linkedin, Send, BookOpen, Download } from "lucide-react";
-import cvFile from "../imports/ERMI_RESUME.pdf";
 import { SEOHead } from "./components/SEOHead";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -75,7 +74,7 @@ export default function App() {
               </a>
               <div className="w-px h-4 bg-border mx-1" aria-hidden="true" />
               <a
-                href={cvFile}
+                href="/ERMI_RESUME.pdf"
                 aria-label="Download CV"
                 download="Ermyas_Misiker_CV.pdf"
                 className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
