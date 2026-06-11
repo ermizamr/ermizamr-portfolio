@@ -1,5 +1,4 @@
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import personalPhoto from "../../imports/Ermi_Cartoon.jpg";
 
 export function Hero() {
   return (
@@ -10,7 +9,7 @@ export function Hero() {
         </h1>
         <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-border">
           <ImageWithFallback
-            src={personalPhoto}
+            src="/Ermi_Cartoon.jpg"
             alt="Ermyas Misiker"
             className="w-full h-full object-cover"
             style={{ objectPosition: "center 0%" }}
