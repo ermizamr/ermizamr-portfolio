@@ -7,7 +7,7 @@ const projects = [
     date: "January 2026",
     description: "B2B SaaS platform automating dental insurance appeal workflows for US dental clinics, with multi-tenant backend and role management.",
     tech: ["Django", "PostgreSQL", "React", "REST APIs"],
-    image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&h=450&fit=crop",
+    image: "/usdent.jpg",
     live: null,
     github: "https://github.com/ermizamr/usdent-appeal-builder",
   },
