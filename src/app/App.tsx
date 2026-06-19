@@ -1,4 +1,4 @@
-import { Home, User, Github, Linkedin, Send, BookOpen, Download } from "lucide-react";
+import { Github, Linkedin, Send, Download } from "lucide-react";
 import { SEOHead } from "./components/SEOHead";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -7,14 +7,10 @@ import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { ThemeProvider } from "./components/theme-provider";
-import { ThemeToggle } from "./components/theme-toggle";
 
 const NAV_LINKS = [
-  { icon: Home,     href: "#home",                                        label: "Home" },
-  { icon: User,     href: "#about",                                       label: "About" },
   { icon: Github,   href: "https://github.com/ermizamr",                  label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/ermiyas-misiker/", label: "LinkedIn" },
-  { icon: BookOpen, href: "#projects",                                    label: "Projects" },
   { icon: Send,     href: "https://t.me/ermijemmy",                       label: "Telegram" },
 ];
 
@@ -57,8 +53,8 @@ export default function App() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                 >
                   <Icon className="h-4 w-4" aria-hidden="true" />
@@ -80,9 +76,10 @@ export default function App() {
                 href="/ERMI_RESUME.pdf"
                 aria-label="Download CV"
                 download="Ermyas_Misiker_CV.pdf"
-                className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors text-xs font-medium"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
+                Download CV
               </a>
             </div>
           </div>
