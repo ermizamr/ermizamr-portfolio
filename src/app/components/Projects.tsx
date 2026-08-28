@@ -1,14 +1,27 @@
-import { Globe, Github } from "lucide-react";
+import { Globe, Github, ChevronLeft, ChevronRight, Download, Send } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useState } from "react";
 
-const projects = [
+interface Project {
+  name: string;
+  date: string;
+  description: string;
+  tech: string[];
+  image: string;
+  screenshots?: string[];
+  live: string | null;
+  liveLabel?: string;
+  github: string | null;
+}
+
+const projects: Project[] = [
   {
     name: "USDENT",
     date: "January 2026",
     description: "B2B SaaS platform automating dental insurance appeal workflows for US dental clinics, with multi-tenant backend and role management.",
     tech: ["Django", "PostgreSQL", "React", "REST APIs"],
     image: "/usdent.jpg",
-    live: null,
+    live: "https://usdent-appeal-builder.vercel.app",
     github: "https://github.com/ermizamr/usdent-appeal-builder",
   },
   {
@@ -26,7 +39,8 @@ const projects = [
     description: "AI-powered Telegram bot for space, STEM, and Ethiopian tech learners. Context-aware responses with persistent memory via Supabase.",
     tech: ["Python", "Groq API", "Supabase", "Telegram Bot API"],
     image: "/tgteacherbot.jpg",
-    live: null,
+    live: "https://t.me/erzamrbot",
+    liveLabel: "Try Bot",
     github: "https://github.com/ermizamr/ai-tg-bot",
   },
   {
@@ -35,7 +49,15 @@ const projects = [
     description: "Mobile app showcasing Ethiopia's contributions to space exploration with live rocket launch alerts and stargazing guidance.",
     tech: ["Flutter", "Dart", "REST APIs"],
     image: "https://images.unsplash.com/photo-1614642264762-d0a3b8bf3700?w=800&h=450&fit=crop",
-    live: null,
+    screenshots: [
+      "/space-et-1.jpg",
+      "/space-et-2.jpg",
+      "/space-et-3.jpg",
+      "/space-et-4.jpg",
+      "/space-et-5.jpg",
+    ],
+    live: "https://github.com/ermizamr/SPACE-FOR-ET-APK/releases",
+    liveLabel: "Download APK",
     github: "https://github.com/ermizamr/SPACE-FOR-ET-APK",
   },
   {
@@ -44,10 +66,59 @@ const projects = [
     description: "Telegram bot that automatically aggregates and delivers daily space science news updates to subscribers.",
     tech: ["Python", "Telegram Bot API"],
     image: "https://images.unsplash.com/photo-1457364887197-9150188c107b?w=800&h=450&fit=crop",
-    live: null,
+    live: "https://t.me/et_space_news_bot",
+    liveLabel: "Try Bot",
     github: "https://github.com/ermizamr/Space-news-bot",
   },
 ];
+
+function ProjectScreenshots({ images, name }: { images: string[]; name: string }) {
+  const [current, setCurrent] = useState(0);
+  if (!images.length) return null;
+
+  return (
+    <div className="mt-1">
+      <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Screenshots</p>
+      <div className="relative rounded-lg overflow-hidden bg-muted aspect-[9/16] max-h-80">
+        <ImageWithFallback
+          src={images[current]}
+          alt={`${name} screenshot ${current + 1}`}
+          className="w-full h-full object-cover"
+        />
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={() => setCurrent((c) => (c - 1 + images.length) % images.length)}
+              className="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded-full bg-background/80 hover:bg-background transition-colors"
+              aria-label="Previous screenshot"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => setCurrent((c) => (c + 1) % images.length)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full bg-background/80 hover:bg-background transition-colors"
+              aria-label="Next screenshot"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                    i === current ? "bg-foreground" : "bg-foreground/30"
+                  }`}
+                  aria-label={`Go to screenshot ${i + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function Projects() {
   return (
@@ -74,10 +145,19 @@ export function Projects() {
                   <span key={t} className="text-xs px-2 py-0.5 border border-border rounded-full text-muted-foreground">{t}</span>
                 ))}
               </div>
+              {project.screenshots && project.screenshots.length > 0 && (
+                <ProjectScreenshots images={project.screenshots} name={project.name} />
+              )}
               <div className="flex gap-2 pt-1">
                 {project.live && (
                   <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-foreground text-background rounded-full hover:opacity-80 transition-opacity">
-                    <Globe className="h-3 w-3" />Website
+                    {project.liveLabel === "Download APK"
+                      ? <Download className="h-3 w-3" />
+                      : project.liveLabel === "Try Bot"
+                      ? <Send className="h-3 w-3" />
+                      : <Globe className="h-3 w-3" />
+                    }
+                    {project.liveLabel ?? "Website"}
                   </a>
                 )}
                 {project.github && (
