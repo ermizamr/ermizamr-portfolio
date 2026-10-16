@@ -21,14 +21,30 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "LISAN (ልሳን) AI",
+    name: "LISAN (ልሳን) Mobile App",
     date: "October 2026",
-    description: "First open-source offline speech-to-speech translation mobile system and crowd-validation platform for Ethiopian & Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali). Features on-device neural inference and a real-time validation hub with a Telegram bot.",
-    tech: ["Python", "FastAPI", "Flutter", "PyTorch", "Supabase", "Telegram Bot API"],
-    image: "/lisan.jpg",
+    description: "Offline-first real-time speech-to-speech translation mobile application for Ethiopian & Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali, English). Powered by 100% genuine on-device VITS neural TTS and quantized NLLB-200 via C++ FFI zero-copy decoding, operating completely without internet within a strict 350MB RAM limit.",
+    tech: ["Flutter", "Dart", "C++ FFI", "ONNX Runtime", "VITS MMS-TTS", "NLLB-200"],
+    image: "/lisan-mobile-cover.jpg",
     screenshots: [
+      "/lisan-screen-perfect.jpg",
       "/lisan-screen-1.jpg",
     ],
+    live: "https://lisan.ermizamr.tech/lisan-app.apk",
+    liveLabel: "Download APK",
+    secondaryLive: {
+      url: "https://lisan.ermizamr.tech",
+      label: "Product Landing",
+      icon: "web",
+    },
+    github: "https://github.com/ermizamr/LISAN",
+  },
+  {
+    name: "LISAN AI Community Validation Hub",
+    date: "October 2026",
+    description: "Crowdsourced micro-task validation ecosystem and open-source benchmark dataset builder for Ethiopian languages. Features a gamified Telegram bot with real-time XP leaderboards and a web verification suite powering 373K+ bitext pairs and multi-way gold benchmarks across 4 languages.",
+    tech: ["Python", "FastAPI", "Supabase", "PostgreSQL", "Telegram Bot API", "Tailwind CSS"],
+    image: "/lisan.jpg",
     live: "https://lisan.ermizamr.tech/validate.html",
     liveLabel: "Web Hub",
     secondaryLive: {
