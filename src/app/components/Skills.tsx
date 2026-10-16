@@ -1,7 +1,8 @@
 export function Skills() {
   const skills = [
     "Python", "Django", "JavaScript", "TypeScript",
-    "React", "Flutter", "Node.js",
+    "React", "Flutter", "PyTorch", "Node.js",
+    "On-Device AI / NMT", "Speech & NLP",
     "PostgreSQL", "Supabase", "REST APIs",
     "RBAC / Auth", "Git & GitHub", "Vercel",
     "Telegram Bot API", "Groq / OpenAI API",

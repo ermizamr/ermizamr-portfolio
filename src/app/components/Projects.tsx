@@ -11,10 +11,33 @@ interface Project {
   screenshots?: string[];
   live: string | null;
   liveLabel?: string;
+  secondaryLive?: {
+    url: string;
+    label: string;
+    icon?: "bot" | "web" | "download";
+  };
   github: string | null;
 }
 
 const projects: Project[] = [
+  {
+    name: "LISAN (ልሳን) AI",
+    date: "October 2026",
+    description: "First open-source offline speech-to-speech translation mobile system and crowd-validation platform for Ethiopian & Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali). Features on-device neural inference and a real-time validation hub with a Telegram bot.",
+    tech: ["Python", "FastAPI", "Flutter", "PyTorch", "Supabase", "Telegram Bot API"],
+    image: "/lisan.jpg",
+    screenshots: [
+      "/lisan-screen-1.jpg",
+    ],
+    live: "https://lisan.ermizamr.tech/validate.html",
+    liveLabel: "Web Hub",
+    secondaryLive: {
+      url: "https://t.me/LisanAiEtBot",
+      label: "Telegram Bot",
+      icon: "bot",
+    },
+    github: "https://github.com/ermizamr/LISAN",
+  },
   {
     name: "USDENT",
     date: "January 2026",
@@ -148,7 +171,7 @@ export function Projects() {
               {project.screenshots && project.screenshots.length > 0 && (
                 <ProjectScreenshots images={project.screenshots} name={project.name} />
               )}
-              <div className="flex gap-2 pt-1">
+              <div className="flex flex-wrap gap-2 pt-1">
                 {project.live && (
                   <a href={project.live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-foreground text-background rounded-full hover:opacity-80 transition-opacity">
                     {project.liveLabel === "Download APK"
@@ -158,6 +181,12 @@ export function Projects() {
                       : <Globe className="h-3 w-3" />
                     }
                     {project.liveLabel ?? "Website"}
+                  </a>
+                )}
+                {project.secondaryLive && (
+                  <a href={project.secondaryLive.url} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 bg-foreground text-background rounded-full hover:opacity-80 transition-opacity">
+                    {project.secondaryLive.icon === "bot" ? <Send className="h-3 w-3" /> : <Globe className="h-3 w-3" />}
+                    {project.secondaryLive.label}
                   </a>
                 )}
                 {project.github && (

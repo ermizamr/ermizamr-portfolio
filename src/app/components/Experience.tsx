@@ -1,5 +1,13 @@
 const experiences = [
   {
+    initial: "L",
+    color: "bg-amber-100 text-amber-700",
+    company: "LISAN (ልሳን) AI",
+    role: "Co-Founder & Core AI Systems Lead",
+    period: "Feb 2026 – Present",
+    description: "Spearheading Ethiopia's first open-source offline speech-to-speech translation mobile system and crowd-validation ecosystem across 4 Ethiopian languages. Engineered serverless webhook architecture, real-time Supabase PostgreSQL store, and gamified Telegram bot.",
+  },
+  {
     initial: "U",
     color: "bg-blue-100 text-blue-700",
     company: "USDENT",
