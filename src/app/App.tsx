@@ -1,4 +1,4 @@
-import { Github, Linkedin, Send, Download, ArrowUpRight } from "lucide-react";
+import { Download } from "lucide-react";
 import { SEOHead } from "./components/SEOHead";
 import { Hero } from "./components/Hero";
 import { Experience } from "./components/Experience";
@@ -7,6 +7,7 @@ import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { ThemeProvider } from "./components/theme-provider";
 import { ThemeToggle } from "./components/theme-toggle";
+import { CommandMenu } from "./components/CommandMenu";
 
 const NAV_LINKS = [
   { href: "#projects", label: "Projects" },
@@ -46,6 +47,7 @@ export default function App() {
             </nav>
 
             <div className="flex items-center gap-2">
+              <CommandMenu />
               <ThemeToggle />
               <a
                 href="/ERMI_RESUME.pdf"
@@ -91,6 +93,8 @@ export default function App() {
             <a href="#contact" className="text-xs font-medium px-2 py-1 text-muted-foreground hover:text-foreground">
               Contact
             </a>
+            <div className="w-px h-3 bg-border" />
+            <CommandMenu />
             <div className="w-px h-3 bg-border" />
             <ThemeToggle />
           </div>

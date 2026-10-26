@@ -1,7 +1,10 @@
-import { Globe, Github, Download, Send, ArrowUpRight, Sparkles, Cpu, Layers } from "lucide-react";
+import { useState } from "react";
+import { Globe, Github, Download, Send, ArrowUpRight, Sparkles, Cpu, Layers, Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function Projects() {
+  const [activeGallery, setActiveGallery] = useState<{ title: string; images: string[] } | null>(null);
+
   return (
     <section id="projects" aria-label="Featured Projects" className="space-y-8">
       <div>
@@ -17,15 +20,26 @@ export function Projects() {
       {/* Flagship Spotlight 1: Weg (ወግ) AI */}
       <article className="border border-border/80 rounded-2xl overflow-hidden bg-card/60 backdrop-blur-sm hover:border-foreground/30 transition-all shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-          <div className="lg:col-span-5 aspect-video lg:aspect-auto bg-muted overflow-hidden">
+          <div className="lg:col-span-5 aspect-video lg:aspect-auto bg-muted overflow-hidden relative group">
             <ImageWithFallback
               src="/weg-cover.jpg"
               alt="Weg AI Meeting Assistant"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
+            <button
+              type="button"
+              onClick={() => setActiveGallery({
+                title: "Weg (ወግ) AI — Companion & Meeting Notes UI",
+                images: ["/weg-screen-1.png", "/weg-screen-2.png"]
+              })}
+              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur border border-border text-xs font-medium text-foreground hover:bg-foreground hover:text-background transition-colors cursor-pointer shadow-md"
+            >
+              <Eye className="h-3.5 w-3.5" />
+              Screenshots (2)
+            </button>
           </div>
           <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                   Featured AI Product · Oct 2026
@@ -38,6 +52,25 @@ export function Projects() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Client-side AI meeting notes assistant built for Google Meet & Android, specifically designed for Amharic and Amharic-English bilingual code-switching. Captures tab/system audio directly without bot participants, streams 5s sequential audio chunks, and leverages Gemini 2.5 Flash with Hohe ASR to generate instant executive summaries and action items.
               </p>
+
+              {/* Architecture Pipeline Flow */}
+              <div className="rounded-xl border border-border/70 bg-muted/30 p-3 space-y-1.5 font-mono text-[11px]">
+                <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground flex items-center gap-1.5">
+                  <Cpu className="h-3 w-3 text-emerald-500" /> Pipeline Architecture
+                </p>
+                <div className="flex flex-wrap items-center gap-1 text-muted-foreground">
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">Tab Audio</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">5s Chunks</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">Hohe ASR</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">Gemini 2.5 Flash</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-emerald-500 font-bold">Executive Notes</span>
+                </div>
+              </div>
+
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {["Chrome MV3", "Android (Kotlin)", "Python FastAPI", "Gemini 2.5 Flash", "Hohe ASR", "Tailwind CSS"].map((t) => (
                   <span key={t} className="text-xs px-2.5 py-0.5 rounded-full border border-border bg-muted/40 text-muted-foreground font-medium">
@@ -75,15 +108,26 @@ export function Projects() {
       {/* Flagship Spotlight 2: LISAN (ልሳን) Mobile App */}
       <article className="border border-border/80 rounded-2xl overflow-hidden bg-card/60 backdrop-blur-sm hover:border-foreground/30 transition-all shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-          <div className="lg:col-span-5 aspect-video lg:aspect-auto bg-muted overflow-hidden">
+          <div className="lg:col-span-5 aspect-video lg:aspect-auto bg-muted overflow-hidden relative group">
             <ImageWithFallback
               src="/lisan-mobile-cover.jpg"
               alt="LISAN Mobile App"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
+            <button
+              type="button"
+              onClick={() => setActiveGallery({
+                title: "LISAN (ልሳን) — Offline Speech-to-Speech Mobile UI",
+                images: ["/lisan-screen-perfect.jpg", "/lisan-screen-1.jpg"]
+              })}
+              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur border border-border text-xs font-medium text-foreground hover:bg-foreground hover:text-background transition-colors cursor-pointer shadow-md"
+            >
+              <Eye className="h-3.5 w-3.5" />
+              Screenshots (2)
+            </button>
           </div>
           <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
                   Flagship Speech AI · Oct 2026
@@ -96,6 +140,25 @@ export function Projects() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Offline-first real-time speech-to-speech translation mobile application for Ethiopian & Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali, English). Powered by 100% genuine on-device VITS neural TTS and quantized NLLB-200 via C++ FFI zero-copy decoding, operating completely without internet within a strict 350MB RAM limit.
               </p>
+
+              {/* Architecture Pipeline Flow */}
+              <div className="rounded-xl border border-border/70 bg-muted/30 p-3 space-y-1.5 font-mono text-[11px]">
+                <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground flex items-center gap-1.5">
+                  <Cpu className="h-3 w-3 text-purple-500" /> On-Device Neural Pipeline (&lt;350MB RAM)
+                </p>
+                <div className="flex flex-wrap items-center gap-1 text-muted-foreground">
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">Mic Audio</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">VITS MMS-TTS</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">NLLB-200 Q4</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-foreground">C++ FFI Zero-Copy</span>
+                  <span>➔</span>
+                  <span className="px-2 py-0.5 rounded bg-background border border-border text-purple-500 font-bold">Offline Audio Out</span>
+                </div>
+              </div>
+
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {["Flutter", "Dart", "C++ FFI", "ONNX Runtime", "VITS MMS-TTS", "NLLB-200"].map((t) => (
                   <span key={t} className="text-xs px-2.5 py-0.5 rounded-full border border-border bg-muted/40 text-muted-foreground font-medium">
@@ -272,6 +335,37 @@ export function Projects() {
           </div>
         </article>
       </div>
+
+      {/* Screenshot Lightbox Modal */}
+      {activeGallery && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in"
+          onClick={() => setActiveGallery(null)}
+        >
+          <div
+            className="relative w-full max-w-2xl bg-card border border-border rounded-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-border pb-3">
+              <h3 className="font-bold text-base">{activeGallery.title}</h3>
+              <button
+                type="button"
+                onClick={() => setActiveGallery(null)}
+                className="p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {activeGallery.images.map((img, i) => (
+                <div key={img} className="rounded-xl overflow-hidden border border-border bg-muted aspect-[9/16]">
+                  <ImageWithFallback src={img} alt={`Screenshot ${i + 1}`} className="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
