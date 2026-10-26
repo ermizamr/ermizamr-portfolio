@@ -59,7 +59,7 @@ export function Contact() {
           <button
             type="button"
             onClick={copyEmail}
-            className="text-xs px-2 py-0.5 rounded border border-border hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="text-xs px-2.5 py-1 rounded-md border border-border hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             {copied ? "Copied" : "Copy"}
           </button>
@@ -134,7 +134,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="text-xs font-medium px-4 py-2 bg-foreground text-background rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer"
+                className="text-xs font-medium px-4 py-2 bg-foreground text-background rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
               >
                 {status === "sending" ? "Sending..." : "Send Message"}
               </button>

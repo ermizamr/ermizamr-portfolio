@@ -6,7 +6,7 @@ export function Hero() {
     <section className="space-y-6">
       <div className="flex items-start justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">
             Ermyas Misiker
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground">
@@ -14,15 +14,15 @@ export function Hero() {
           </p>
           <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground pt-1">
             <span className="flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5" /> Addis Ababa
+              <MapPin className="size-3.5" /> Addis Ababa
             </span>
             <span className="flex items-center gap-1.5">
-              <GraduationCap className="h-3.5 w-3.5" /> Computer Science, AAU
+              <GraduationCap className="size-3.5" /> Computer Science, AAU
             </span>
           </div>
         </div>
 
-        <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border border-border">
+        <div className="shrink-0 size-20 sm:size-24 rounded-full overflow-hidden border border-border">
           <ImageWithFallback
             src="/Ermi_Cartoon.jpg"
             alt="Ermyas Misiker"
@@ -37,43 +37,43 @@ export function Hero() {
       </p>
 
       {/* Direct, clean links */}
-      <div className="flex flex-wrap items-center gap-3 pt-1">
+      <div className="flex flex-wrap items-center gap-2.5 pt-1">
         <a
           href="https://github.com/ermizamr"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          <Github className="h-3.5 w-3.5" /> GitHub
+          <Github className="size-3.5" /> GitHub
         </a>
         <a
           href="https://www.linkedin.com/in/ermiyas-misiker/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          <Linkedin className="h-3.5 w-3.5" /> LinkedIn
+          <Linkedin className="size-3.5" /> LinkedIn
         </a>
         <a
           href="https://t.me/ermijemmy"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          <Send className="h-3.5 w-3.5" /> Telegram
+          <Send className="size-3.5" /> Telegram
         </a>
         <a
           href="mailto:ermizamr197@gmail.com"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          <Mail className="h-3.5 w-3.5" /> Email
+          <Mail className="size-3.5" /> Email
         </a>
         <a
           href="/ERMI_RESUME.pdf"
           download="Ermyas_Misiker_CV.pdf"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          <Download className="h-3.5 w-3.5" /> Resume
+          <Download className="size-3.5" /> Resume
         </a>
       </div>
     </section>

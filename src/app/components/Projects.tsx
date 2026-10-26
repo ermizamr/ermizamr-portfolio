@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Globe, Github, Download, Send, ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
+export type ProjectDomain = "All" | "Speech AI" | "Audio Systems" | "Web & SaaS" | "Mobile & Bots";
+
 interface ProjectItem {
   title: string;
+  domain: Exclude<ProjectDomain, "All">;
   date: string;
   description: string;
   tech: string[];
@@ -14,9 +18,12 @@ interface ProjectItem {
   }[];
 }
 
+const DOMAINS: ProjectDomain[] = ["All", "Speech AI", "Audio Systems", "Web & SaaS", "Mobile & Bots"];
+
 const projects: ProjectItem[] = [
   {
     title: "Weg (ወግ) — AI Meeting Intelligence",
+    domain: "Audio Systems",
     date: "October 2026",
     description:
       "Client-side AI meeting notes assistant for Google Meet and Android. Captures tab and system audio directly without bot participants, streams 5-second sequential audio chunks, and transcribes Amharic and Amharic-English bilingual speech using Gemini 2.5 Flash and Hohe ASR to generate structured summaries and action items.",
@@ -29,6 +36,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "LISAN (ልሳን) — Offline Speech-to-Speech Mobile App",
+    domain: "Speech AI",
     date: "October 2026",
     description:
       "Offline speech-to-speech translation mobile application for Ethiopian and Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali, English). Runs genuine on-device VITS MMS-TTS and quantized NLLB-200 via zero-copy C++ FFI decoding, operating completely without an internet connection within a strict 350MB RAM limit.",
@@ -42,6 +50,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "LISAN AI Community Validation Hub",
+    domain: "Speech AI",
     date: "October 2026",
     description:
       "Crowdsourced micro-task validation ecosystem and open-source benchmark dataset builder for Ethiopian languages. Features a gamified Telegram bot with real-time XP leaderboards and a web verification suite powering 373K+ bitext pairs.",
@@ -55,6 +64,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "USDENT — Insurance Appeals Builder",
+    domain: "Web & SaaS",
     date: "January 2026",
     description:
       "B2B SaaS platform automating dental insurance appeal workflows for US dental clinics. Includes a multi-tenant Django/PostgreSQL backend, role-based access control, and automated appeal letter generation.",
@@ -67,6 +77,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "TG-Teacher Bot",
+    domain: "Mobile & Bots",
     date: "March 2026",
     description:
       "AI-powered Telegram bot for space science and STEM learners with persistent context and memory stored via Supabase PostgreSQL.",
@@ -79,6 +90,7 @@ const projects: ProjectItem[] = [
   },
   {
     title: "Space For ET",
+    domain: "Mobile & Bots",
     date: "April 2026",
     description:
       "Mobile application tracking Ethiopia's space science initiatives, live rocket launches, and satellite pass schedules.",
@@ -92,15 +104,60 @@ const projects: ProjectItem[] = [
 ];
 
 export function Projects() {
+  const [selectedDomain, setSelectedDomain] = useState<ProjectDomain>("All");
+
+  const filteredProjects =
+    selectedDomain === "All"
+      ? projects
+      : projects.filter((project) => project.domain === selectedDomain);
+
   return (
     <section id="projects" aria-label="Projects" className="space-y-6">
-      <h2 className="text-xl font-bold tracking-tight">Projects</h2>
+      <div className="space-y-3">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-xl font-bold tracking-tight text-foreground">Projects</h2>
+          <span className="text-xs text-muted-foreground font-mono">
+            {filteredProjects.length} {filteredProjects.length === 1 ? "project" : "projects"}
+          </span>
+        </div>
 
-      <div className="space-y-8">
-        {projects.map((project) => (
+        {/* Domain Filter Pills — differing projects by domain per user specification */}
+        <div
+          role="tablist"
+          aria-label="Filter projects by domain"
+          className="flex flex-wrap items-center gap-1.5 pt-1"
+        >
+          {DOMAINS.map((domain) => {
+            const count = domain === "All" ? projects.length : projects.filter((p) => p.domain === domain).length;
+            const isSelected = selectedDomain === domain;
+            return (
+              <button
+                key={domain}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => setSelectedDomain(domain)}
+                className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
+                  isSelected
+                    ? "bg-foreground text-background font-medium"
+                    : "border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
+              >
+                <span>{domain}</span>
+                <span className={`text-[10px] ${isSelected ? "opacity-80" : "opacity-60"}`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        {filteredProjects.map((project) => (
           <article
             key={project.title}
-            className="border border-border rounded-xl overflow-hidden bg-card"
+            className="border border-border rounded-xl overflow-hidden bg-card transition-colors"
           >
             <div className="aspect-[16/9] sm:aspect-[2/1] bg-muted overflow-hidden">
               <ImageWithFallback
@@ -110,9 +167,14 @@ export function Projects() {
               />
             </div>
             <div className="p-5 sm:p-6 space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-                <h3 className="font-bold text-base sm:text-lg">{project.title}</h3>
-                <span className="text-xs text-muted-foreground font-mono">{project.date}</span>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1.5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-bold text-base sm:text-lg text-foreground">{project.title}</h3>
+                  <span className="text-[11px] font-medium px-2 py-0.5 rounded border border-border bg-muted/40 text-muted-foreground">
+                    {project.domain}
+                  </span>
+                </div>
+                <span className="text-xs text-muted-foreground font-mono shrink-0">{project.date}</span>
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 {project.description}
@@ -143,11 +205,11 @@ export function Projects() {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
                     >
-                      <Icon className="h-3.5 w-3.5" />
+                      <Icon className="size-3.5" />
                       {link.label}
-                      <ArrowUpRight className="h-3 w-3 opacity-60" />
+                      <ArrowUpRight className="size-3 opacity-60" />
                     </a>
                   );
                 })}

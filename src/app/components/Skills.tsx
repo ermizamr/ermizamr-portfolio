@@ -60,15 +60,15 @@ export function Skills() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {skillGroups.map((group) => (
-          <div key={group.category} className="space-y-2">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <div key={group.category} className="space-y-2.5">
+            <h3 className="text-sm font-semibold text-foreground">
               {group.category}
             </h3>
             <div className="flex flex-wrap gap-1.5">
               {group.items.map((skill) => (
                 <span
                   key={skill}
-                  className="text-xs px-2.5 py-1 rounded-md border border-border bg-muted/40 text-foreground"
+                  className="text-xs px-2.5 py-1 rounded-md border border-border bg-muted/30 text-foreground"
                 >
                   {skill}
                 </span>
