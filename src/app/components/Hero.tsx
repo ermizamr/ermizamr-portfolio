@@ -2,7 +2,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function Hero() {
   return (
-    <section className="pb-12 pt-16 sm:pt-24">
+    <section className="pt-2 sm:pt-4 pb-4">
       <div className="flex items-start justify-between gap-4 mb-4">
         <h1 className="text-4xl sm:text-5xl tracking-tight" style={{ fontWeight: 800 }}>
           Hi, I'm Ermyas&nbsp;👋

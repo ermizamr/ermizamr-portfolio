@@ -175,13 +175,12 @@ function ProjectScreenshots({ images, name }: { images: string[]; name: string }
 
 export function Projects() {
   return (
-    <section aria-label="Featured Projects" className="py-10 border-t border-border">
-      <div className="mb-8 text-center">
-        <span className="inline-block text-xs font-semibold px-3 py-1 bg-foreground text-background rounded-full mb-4">My Projects</span>
-        <h2 className="text-3xl font-extrabold tracking-tight">Check out my latest work</h2>
-        <p className="text-muted-foreground mt-2 text-sm">A mix of SaaS products, bots, and mobile apps — here are a few of my favorites.</p>
+    <section aria-label="Featured Projects" className="py-2">
+      <div className="mb-6">
+        <h2 className="text-xl font-bold mb-1">Projects</h2>
+        <p className="text-muted-foreground text-sm">A mix of AI platforms, B2B SaaS, and mobile apps.</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         {projects.map((project) => (
           <article key={project.name} aria-label={project.name} className="border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
             <div className="aspect-video bg-muted overflow-hidden">

@@ -35,7 +35,7 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section aria-label="Work Experience and Education" className="py-10 border-t border-border">
+    <section aria-label="Work Experience and Education" className="py-2">
       <h2 className="text-xl font-bold mb-6">Work Experience</h2>
       <div className="space-y-6">
         {experiences.map((exp) => (

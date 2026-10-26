@@ -21,23 +21,40 @@ export default function App() {
       <SEOHead />
 
       <div className="min-h-screen bg-background text-foreground">
-        <div className="max-w-2xl mx-auto px-6 pb-32">
-
-          <header id="home">
+        <main
+          id="main-content"
+          className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-border"
+        >
+          {/* Section 1: About Me */}
+          <section
+            id="about-section"
+            aria-label="About Me"
+            className="p-6 sm:p-8 lg:p-10 lg:h-screen lg:overflow-y-auto space-y-8 pb-32"
+          >
             <Hero />
-          </header>
-
-          <main id="main-content">
             <div id="about"><About /></div>
-            <div id="experience"><Experience /></div>
             <div id="skills"><Skills /></div>
-            <div id="projects"><Projects /></div>
-          </main>
+            <div id="contact"><Contact /></div>
+          </section>
 
-          <footer id="contact">
-            <Contact />
-          </footer>
-        </div>
+          {/* Section 2: Work Experience */}
+          <section
+            id="experience-section"
+            aria-label="Work Experience"
+            className="p-6 sm:p-8 lg:p-10 lg:h-screen lg:overflow-y-auto space-y-8 pb-32"
+          >
+            <Experience />
+          </section>
+
+          {/* Section 3: Projects */}
+          <section
+            id="projects-section"
+            aria-label="Projects"
+            className="p-6 sm:p-8 lg:p-10 lg:h-screen lg:overflow-y-auto space-y-8 pb-32"
+          >
+            <Projects />
+          </section>
+        </main>
 
         <a
           href="#main-content"
