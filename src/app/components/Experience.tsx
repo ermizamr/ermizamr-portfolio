@@ -1,9 +1,11 @@
 import { Briefcase, GraduationCap } from "lucide-react";
+import { SpotlightCard } from "./ui/SpotlightCard";
 
 const experiences = [
   {
     initial: "W",
     color: "bg-lime-500/10 text-lime-600 dark:text-lime-400 border border-lime-500/20",
+    spotlight: "rgba(212, 255, 50, 0.08)",
     company: "Weg (ወግ) AI",
     role: "Founder & Lead Systems Architect",
     period: "Oct 2026 – Present",
@@ -13,6 +15,7 @@ const experiences = [
   {
     initial: "L",
     color: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20",
+    spotlight: "rgba(168, 85, 247, 0.08)",
     company: "LISAN (ልሳን) AI",
     role: "Co-Founder & Core AI Systems Lead",
     period: "Feb 2026 – Present",
@@ -22,6 +25,7 @@ const experiences = [
   {
     initial: "U",
     color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20",
+    spotlight: "rgba(59, 130, 246, 0.08)",
     company: "USDENT",
     role: "Founder & Lead Full-Stack Engineer",
     period: "Jan 2026 – Present",
@@ -31,6 +35,7 @@ const experiences = [
   {
     initial: "E",
     color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20",
+    spotlight: "rgba(16, 185, 129, 0.08)",
     company: "E.mslene Educational Platform",
     role: "Full-Stack Developer & Maintainer",
     period: "Jan 2025 – Present",
@@ -54,9 +59,10 @@ export function Experience() {
 
       <div className="space-y-4">
         {experiences.map((exp) => (
-          <div
+          <SpotlightCard
             key={exp.company}
-            className="p-5 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm space-y-3 hover:border-foreground/20 transition-colors"
+            spotlightColor={exp.spotlight}
+            className="p-5 space-y-3"
           >
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
               <div className="flex items-center gap-3">
@@ -77,12 +83,12 @@ export function Experience() {
             </p>
             <div className="flex flex-wrap gap-1.5 pl-11">
               {exp.skills.map((s) => (
-                <span key={s} className="text-xs px-2 py-0.5 rounded-full border border-border bg-muted/30 text-muted-foreground">
+                <span key={s} className="text-xs px-2 py-0.5 rounded-full border border-border bg-muted/40 text-muted-foreground">
                   {s}
                 </span>
               ))}
             </div>
-          </div>
+          </SpotlightCard>
         ))}
       </div>
 
@@ -92,13 +98,13 @@ export function Experience() {
           <GraduationCap className="h-4 w-4" />
           Education
         </h3>
-        <div className="p-5 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <SpotlightCard className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="space-y-1">
             <h4 className="font-bold text-base">Addis Ababa University</h4>
             <p className="text-xs text-muted-foreground">Bachelor of Science in Computer Science</p>
           </div>
           <span className="text-xs text-muted-foreground font-mono">2022 – 2026</span>
-        </div>
+        </SpotlightCard>
       </div>
     </section>
   );

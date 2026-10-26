@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Globe, Github, Download, Send, ArrowUpRight, Sparkles, Cpu, Layers, Eye, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Globe, Github, Download, Send, ArrowUpRight, Sparkles, Cpu, Eye, X } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { SpotlightCard } from "./ui/SpotlightCard";
 
 export function Projects() {
   const [activeGallery, setActiveGallery] = useState<{ title: string; images: string[] } | null>(null);
@@ -18,7 +19,7 @@ export function Projects() {
       </div>
 
       {/* Flagship Spotlight 1: Weg (ወግ) AI */}
-      <article className="border border-border/80 rounded-2xl overflow-hidden bg-card/60 backdrop-blur-sm hover:border-foreground/30 transition-all shadow-sm">
+      <SpotlightCard spotlightColor="rgba(212, 255, 50, 0.08)">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
           <div className="lg:col-span-5 aspect-video lg:aspect-auto bg-muted overflow-hidden relative group">
             <ImageWithFallback
@@ -53,7 +54,7 @@ export function Projects() {
                 Client-side AI meeting notes assistant built for Google Meet & Android, specifically designed for Amharic and Amharic-English bilingual code-switching. Captures tab/system audio directly without bot participants, streams 5s sequential audio chunks, and leverages Gemini 2.5 Flash with Hohe ASR to generate instant executive summaries and action items.
               </p>
 
-              {/* Architecture Pipeline Flow */}
+              {/* Architecture Pipeline Flow (StackSorted Pattern) */}
               <div className="rounded-xl border border-border/70 bg-muted/30 p-3 space-y-1.5 font-mono text-[11px]">
                 <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground flex items-center gap-1.5">
                   <Cpu className="h-3 w-3 text-emerald-500" /> Pipeline Architecture
@@ -103,10 +104,10 @@ export function Projects() {
             </div>
           </div>
         </div>
-      </article>
+      </SpotlightCard>
 
       {/* Flagship Spotlight 2: LISAN (ልሳን) Mobile App */}
-      <article className="border border-border/80 rounded-2xl overflow-hidden bg-card/60 backdrop-blur-sm hover:border-foreground/30 transition-all shadow-sm">
+      <SpotlightCard spotlightColor="rgba(168, 85, 247, 0.08)">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
           <div className="lg:col-span-5 aspect-video lg:aspect-auto bg-muted overflow-hidden relative group">
             <ImageWithFallback
@@ -141,7 +142,7 @@ export function Projects() {
                 Offline-first real-time speech-to-speech translation mobile application for Ethiopian & Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali, English). Powered by 100% genuine on-device VITS neural TTS and quantized NLLB-200 via C++ FFI zero-copy decoding, operating completely without internet within a strict 350MB RAM limit.
               </p>
 
-              {/* Architecture Pipeline Flow */}
+              {/* Architecture Pipeline Flow (StackSorted Pattern) */}
               <div className="rounded-xl border border-border/70 bg-muted/30 p-3 space-y-1.5 font-mono text-[11px]">
                 <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground flex items-center gap-1.5">
                   <Cpu className="h-3 w-3 text-purple-500" /> On-Device Neural Pipeline (&lt;350MB RAM)
@@ -199,14 +200,14 @@ export function Projects() {
             </div>
           </div>
         </div>
-      </article>
+      </SpotlightCard>
 
-      {/* Secondary Projects Grid (2 Columns) */}
+      {/* Secondary Projects Grid (2 Columns, StackSorted Spotlight Cards) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
         {/* LISAN Validation Hub */}
-        <article className="border border-border/80 rounded-xl overflow-hidden bg-card/60 backdrop-blur-sm flex flex-col justify-between hover:border-foreground/30 transition-all">
+        <SpotlightCard className="flex flex-col justify-between">
           <div className="aspect-video bg-muted overflow-hidden">
-            <ImageWithFallback src="/lisan.jpg" alt="LISAN Validation Hub" className="w-full h-full object-cover" />
+            <ImageWithFallback src="/lisan.jpg" alt="LISAN Validation Hub" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div className="space-y-2">
@@ -234,12 +235,12 @@ export function Projects() {
               </a>
             </div>
           </div>
-        </article>
+        </SpotlightCard>
 
         {/* USDENT */}
-        <article className="border border-border/80 rounded-xl overflow-hidden bg-card/60 backdrop-blur-sm flex flex-col justify-between hover:border-foreground/30 transition-all">
+        <SpotlightCard className="flex flex-col justify-between">
           <div className="aspect-video bg-muted overflow-hidden">
-            <ImageWithFallback src="/usdent.jpg" alt="USDENT Platform" className="w-full h-full object-cover" />
+            <ImageWithFallback src="/usdent.jpg" alt="USDENT Platform" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div className="space-y-2">
@@ -267,12 +268,12 @@ export function Projects() {
               </a>
             </div>
           </div>
-        </article>
+        </SpotlightCard>
 
         {/* TG-Teacher Bot */}
-        <article className="border border-border/80 rounded-xl overflow-hidden bg-card/60 backdrop-blur-sm flex flex-col justify-between hover:border-foreground/30 transition-all">
+        <SpotlightCard className="flex flex-col justify-between">
           <div className="aspect-video bg-muted overflow-hidden">
-            <ImageWithFallback src="/tgteacherbot.jpg" alt="TG-Teacher Bot" className="w-full h-full object-cover" />
+            <ImageWithFallback src="/tgteacherbot.jpg" alt="TG-Teacher Bot" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div className="space-y-2">
@@ -300,12 +301,12 @@ export function Projects() {
               </a>
             </div>
           </div>
-        </article>
+        </SpotlightCard>
 
         {/* Space For ET */}
-        <article className="border border-border/80 rounded-xl overflow-hidden bg-card/60 backdrop-blur-sm flex flex-col justify-between hover:border-foreground/30 transition-all">
+        <SpotlightCard className="flex flex-col justify-between">
           <div className="aspect-video bg-muted overflow-hidden">
-            <ImageWithFallback src="/space-et-2.jpg" alt="Space For ET App" className="w-full h-full object-cover" />
+            <ImageWithFallback src="/space-et-2.jpg" alt="Space For ET App" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
           <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div className="space-y-2">
@@ -333,7 +334,7 @@ export function Projects() {
               </a>
             </div>
           </div>
-        </article>
+        </SpotlightCard>
       </div>
 
       {/* Screenshot Lightbox Modal */}

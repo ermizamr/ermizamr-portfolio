@@ -1,10 +1,12 @@
 import { Cpu, Server, Smartphone, Wrench } from "lucide-react";
+import { SpotlightCard } from "./ui/SpotlightCard";
 
 interface SkillDomain {
   domain: string;
   icon: typeof Cpu;
   dot: string;
   color: string;
+  spotlightColor: string;
   skills: string[];
 }
 
@@ -14,6 +16,7 @@ const skillDomains: SkillDomain[] = [
     icon: Cpu,
     dot: "bg-purple-500",
     color: "text-purple-600 dark:text-purple-400",
+    spotlightColor: "rgba(168, 85, 247, 0.12)",
     skills: [
       "On-Device AI / NMT",
       "Speech & NLP",
@@ -30,6 +33,7 @@ const skillDomains: SkillDomain[] = [
     icon: Server,
     dot: "bg-blue-500",
     color: "text-blue-600 dark:text-blue-400",
+    spotlightColor: "rgba(59, 130, 246, 0.12)",
     skills: [
       "Python",
       "FastAPI",
@@ -46,6 +50,7 @@ const skillDomains: SkillDomain[] = [
     icon: Smartphone,
     dot: "bg-emerald-500",
     color: "text-emerald-600 dark:text-emerald-400",
+    spotlightColor: "rgba(16, 185, 129, 0.12)",
     skills: [
       "Flutter",
       "Dart",
@@ -61,6 +66,7 @@ const skillDomains: SkillDomain[] = [
     icon: Wrench,
     dot: "bg-amber-500",
     color: "text-amber-600 dark:text-amber-400",
+    spotlightColor: "rgba(245, 158, 11, 0.12)",
     skills: [
       "Chrome Extension (MV3)",
       "Telegram Bot API",
@@ -88,9 +94,10 @@ export function Skills() {
         {skillDomains.map((group) => {
           const Icon = group.icon;
           return (
-            <div
+            <SpotlightCard
               key={group.domain}
-              className="p-5 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm space-y-3 hover:border-foreground/20 transition-colors"
+              spotlightColor={group.spotlightColor}
+              className="p-5 space-y-3"
             >
               <div className="flex items-center gap-2.5">
                 <span className={`w-2 h-2 rounded-full ${group.dot}`} />
@@ -103,13 +110,13 @@ export function Skills() {
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs font-medium px-2.5 py-1 rounded-full border border-border bg-muted/30 text-foreground hover:bg-foreground hover:text-background transition-colors"
+                    className="text-xs font-medium px-2.5 py-1 rounded-full border border-border bg-muted/40 text-foreground hover:bg-foreground hover:text-background transition-colors cursor-default"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
+            </SpotlightCard>
           );
         })}
       </div>

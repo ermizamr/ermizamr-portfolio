@@ -1,11 +1,12 @@
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Github, Linkedin, Send, Mail, MapPin, GraduationCap, ArrowUpRight, Sparkles } from "lucide-react";
+import { Github, Linkedin, Send, Mail, MapPin, GraduationCap, ArrowUpRight } from "lucide-react";
+import { SpotlightCard } from "./ui/SpotlightCard";
 
 export function Hero() {
   return (
     <section className="space-y-10">
-      {/* Availability Status Badge */}
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium">
+      {/* Availability Status Badge (StackSorted Glowing Pill) */}
+      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-medium">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -55,12 +56,14 @@ export function Hero() {
       {/* CTAs and Social Links */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
         <div className="flex flex-wrap items-center gap-3">
+          {/* StackSorted Shimmer CTA Button */}
           <a
             href="#projects"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 bg-foreground text-background rounded-full hover:opacity-90 transition-opacity"
+            className="relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition-all hover:scale-[1.02] active:scale-[0.98] group shadow-sm"
           >
-            Explore Projects
-            <ArrowUpRight className="h-4 w-4" />
+            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            <span>Explore Projects</span>
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <a
             href="#contact"
@@ -108,24 +111,24 @@ export function Hero() {
         </div>
       </div>
 
-      {/* High-Signal Engineering Metrics Bento Strip */}
+      {/* High-Signal Engineering Metrics (StackSorted Spotlight Bento Cards) */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-4">
-        <div className="p-4 rounded-xl border border-border/70 bg-card/60 backdrop-blur-sm space-y-1">
+        <SpotlightCard className="p-4 space-y-1">
           <p className="text-2xl font-extrabold tracking-tight text-foreground">373K+</p>
           <p className="text-xs text-muted-foreground leading-snug">Bitext Validation Pairs (LISAN Hub)</p>
-        </div>
-        <div className="p-4 rounded-xl border border-border/70 bg-card/60 backdrop-blur-sm space-y-1">
+        </SpotlightCard>
+        <SpotlightCard className="p-4 space-y-1">
           <p className="text-2xl font-extrabold tracking-tight text-foreground">&lt; 350MB</p>
           <p className="text-xs text-muted-foreground leading-snug">On-Device Neural RAM (C++ FFI)</p>
-        </div>
-        <div className="p-4 rounded-xl border border-border/70 bg-card/60 backdrop-blur-sm space-y-1">
+        </SpotlightCard>
+        <SpotlightCard className="p-4 space-y-1">
           <p className="text-2xl font-extrabold tracking-tight text-foreground">5s Chunks</p>
           <p className="text-xs text-muted-foreground leading-snug">Streaming Audio Pipeline (Weg AI)</p>
-        </div>
-        <div className="p-4 rounded-xl border border-border/70 bg-card/60 backdrop-blur-sm space-y-1">
+        </SpotlightCard>
+        <SpotlightCard className="p-4 space-y-1">
           <p className="text-2xl font-extrabold tracking-tight text-foreground">100%</p>
           <p className="text-xs text-muted-foreground leading-snug">Bot-Free Privacy-First Capture</p>
-        </div>
+        </SpotlightCard>
       </div>
     </section>
   );
