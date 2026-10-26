@@ -17,7 +17,7 @@ export function Hero() {
         </div>
       </div>
       <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-        Full-stack developer building web apps, Telegram bots, and automation tools.
+        Full-stack developer and AI systems engineer. Building on-device speech AI, real-time meeting intelligence, and production B2B platforms.
       </p>
       <div className="flex flex-wrap gap-3">
         <a

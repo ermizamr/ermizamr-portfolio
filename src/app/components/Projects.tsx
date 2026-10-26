@@ -224,6 +224,11 @@ export function Projects() {
                     <Github className="h-3 w-3" />Source
                   </a>
                 )}
+                {!project.live && !project.github && (
+                  <span className="text-xs text-muted-foreground/80 italic px-2 py-1">
+                    Internal Institutional System
+                  </span>
+                )}
               </div>
             </div>
           </article>

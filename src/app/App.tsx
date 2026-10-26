@@ -7,6 +7,7 @@ import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { ThemeProvider } from "./components/theme-provider";
+import { ThemeToggle } from "./components/theme-toggle";
 
 const NAV_LINKS = [
   { icon: Github,   href: "https://github.com/ermizamr",                  label: "GitHub" },
@@ -71,6 +72,8 @@ export default function App() {
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
+              <div className="w-px h-4 bg-border mx-1" aria-hidden="true" />
+              <ThemeToggle />
               <div className="w-px h-4 bg-border mx-1" aria-hidden="true" />
               <a
                 href="/ERMI_RESUME.pdf"
