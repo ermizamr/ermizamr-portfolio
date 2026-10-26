@@ -46,6 +46,22 @@ const featured: FeaturedProject[] = [
 
 const compact: CompactProject[] = [
   {
+    title: "Healthcare Appointment Management API",
+    description:
+      "Enterprise REST API in Java 17 / Spring Boot 3 with Spring Security 6 stateless JWT authentication, role-based access (Admin, Doctor, Patient), Hibernate/JPA relational persistence, and Swagger UI.",
+    links: [
+      { label: "Source", href: "https://github.com/ermizamr" },
+    ],
+  },
+  {
+    title: "LINC — Service Discovery Platform",
+    description:
+      "Monorepo marketplace with 4-layer Node.js/Express backend, 20-table Supabase PostgreSQL schema, Google Gemini AI natural language intent parser, and real-time Socket.io chat.",
+    links: [
+      { label: "Source", href: "https://github.com/ermizamr" },
+    ],
+  },
+  {
     title: "LISAN Validation Hub",
     description:
       "Crowdsourced validation for Ethiopian language bitext. Gamified Telegram bot with XP leaderboards and a web verification suite powering 373K+ pairs.",
@@ -58,7 +74,7 @@ const compact: CompactProject[] = [
   {
     title: "USDENT",
     description:
-      "B2B SaaS automating dental insurance appeal workflows for US clinics. Multi-tenant Django backend with role-based access and automated letter generation.",
+      "B2B SaaS automating dental insurance appeal workflows for US clinics with Tesseract OCR document parsing, Groq LLaMA-3.3 narrative evaluation, and automated ADA 2024 claim form mapping.",
     links: [
       { label: "Demo", href: "https://usdent-appeal-builder.vercel.app" },
       { label: "Source", href: "https://github.com/ermizamr/usdent-appeal-builder" },

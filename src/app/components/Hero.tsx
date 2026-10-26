@@ -25,7 +25,7 @@ export function Hero() {
       </div>
 
       <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-        Full-stack engineer and CS student at Addis Ababa University.
+        Full-stack engineer studying Software Engineering at Addis Ababa University and Cybersecurity Trainee at INSA.
         Currently shipping{" "}
         <strong className="text-foreground font-medium">Weg</strong>{" "}
         (Amharic meeting intelligence for Google Meet) and{" "}

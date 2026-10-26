@@ -1,19 +1,19 @@
 const groups = [
   {
     name: "AI & Speech",
-    skills: "On-Device NMT, ONNX Runtime, C++ FFI, VITS MMS-TTS, NLLB-200, PyTorch, Gemini API, Hohe ASR",
+    skills: "On-Device NMT / Speech AI, ONNX Runtime, C++ FFI, VITS MMS-TTS, Quantized NLLB-200, PyTorch, Gemini 2.5 Flash, Hohe ASR, Prompt Engineering, RAG Pipelines",
   },
   {
     name: "Backend",
-    skills: "Python, FastAPI, Django, PostgreSQL, Supabase, Node.js, REST APIs",
+    skills: "Java 17+, Spring Boot 3 (Spring Security 6, Spring Data JPA, Hibernate), Python (FastAPI, Django), Node.js, Express, PostgreSQL, Supabase, RESTful APIs, OpenAPI/Swagger",
   },
   {
     name: "Frontend & Mobile",
-    skills: "React, TypeScript, Tailwind CSS, Flutter, Dart, Android Kotlin",
+    skills: "React, Next.js, Vite, Tailwind CSS, Flutter, Dart, Android (Kotlin), Chrome MV3 Extensions, WebSockets / Socket.io",
   },
   {
-    name: "Tools",
-    skills: "Chrome MV3, Telegram Bot API, Docker, Git, Vercel",
+    name: "Security & Tools",
+    skills: "JWT & RBAC, Threat Modeling, Docker, Git, GitHub, Maven, Postman, Vercel, Render, Linux / Bash",
   },
 ];
 

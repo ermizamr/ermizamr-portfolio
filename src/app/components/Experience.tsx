@@ -58,13 +58,21 @@ export function Experience() {
         ))}
       </div>
 
-      <div className="pt-2">
+      <div className="pt-2 space-y-4">
         <div className="border-l-2 border-border pl-4 space-y-0.5">
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5">
-            <h3 className="text-sm font-semibold">Addis Ababa University</h3>
-            <span className="text-xs text-muted-foreground tabular-nums">2022 – 2026</span>
+            <h3 className="text-sm font-semibold">Addis Ababa University (AAU)</h3>
+            <span className="text-xs text-muted-foreground tabular-nums">Enrolled 2025 – Expected 2030</span>
           </div>
-          <p className="text-xs text-muted-foreground">BSc Computer Science</p>
+          <p className="text-xs text-muted-foreground">BSc in Software Engineering</p>
+        </div>
+
+        <div className="border-l-2 border-border pl-4 space-y-0.5">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5">
+            <h3 className="text-sm font-semibold">Information Network Security Administration (INSA)</h3>
+            <span className="text-xs text-muted-foreground tabular-nums">5th Round Trainee</span>
+          </div>
+          <p className="text-xs text-muted-foreground">Software Engineering & Cybersecurity Training</p>
         </div>
       </div>
     </section>
