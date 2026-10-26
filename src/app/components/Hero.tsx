@@ -1,28 +1,20 @@
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { Github, Linkedin, Send, Mail, MapPin, GraduationCap, Download } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="space-y-6">
       <div className="flex items-start justify-between gap-6">
-        <div className="space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">
+        <div className="space-y-3">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-balance">
             Ermyas Misiker
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground">
-            Full-stack developer and AI systems engineer based in Addis Ababa, Ethiopia.
+            Building speech AI for Ethiopian languages
           </p>
-          <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground pt-1">
-            <span className="flex items-center gap-1.5">
-              <MapPin className="size-3.5" /> Addis Ababa
-            </span>
-            <span className="flex items-center gap-1.5">
-              <GraduationCap className="size-3.5" /> Computer Science, AAU
-            </span>
-          </div>
         </div>
 
-        <div className="shrink-0 size-20 sm:size-24 rounded-full overflow-hidden border border-border">
+        <div className="shrink-0 size-20 sm:size-28 rounded-2xl overflow-hidden border border-border">
           <ImageWithFallback
             src="/Ermi_Cartoon.jpg"
             alt="Ermyas Misiker"
@@ -32,50 +24,54 @@ export function Hero() {
         </div>
       </div>
 
-      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-        I build production web platforms, on-device speech AI models, and real-time meeting assistants. Currently building <strong className="text-foreground font-medium">Weg</strong> (client-side Amharic meeting notes for Google Meet and Android) and <strong className="text-foreground font-medium">LISAN</strong> (offline on-device speech translation for Ethiopian languages).
+      <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
+        Full-stack engineer and CS student at Addis Ababa University.
+        Currently shipping{" "}
+        <strong className="text-foreground font-medium">Weg</strong>{" "}
+        (Amharic meeting intelligence for Google Meet) and{" "}
+        <strong className="text-foreground font-medium">LISAN</strong>{" "}
+        (offline on-device speech translation across 4 Ethiopian languages).
       </p>
 
-      {/* Direct, clean links */}
-      <div className="flex flex-wrap items-center gap-2.5 pt-1">
+      <nav aria-label="Social links" className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
         <a
           href="https://github.com/ermizamr"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          <Github className="size-3.5" /> GitHub
+          GitHub
         </a>
         <a
           href="https://www.linkedin.com/in/ermiyas-misiker/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          <Linkedin className="size-3.5" /> LinkedIn
+          LinkedIn
         </a>
         <a
           href="https://t.me/ermijemmy"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          <Send className="size-3.5" /> Telegram
+          Telegram
         </a>
         <a
           href="mailto:ermizamr197@gmail.com"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="text-muted-foreground hover:text-foreground transition-colors"
         >
-          <Mail className="size-3.5" /> Email
+          Email
         </a>
         <a
           href="/ERMI_RESUME.pdf"
           download="Ermyas_Misiker_CV.pdf"
-          className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+          className="inline-flex items-center gap-1 text-foreground font-medium hover:opacity-70 transition-opacity"
         >
-          <Download className="size-3.5" /> Resume
+          Resume <ArrowDown className="size-3.5" />
         </a>
-      </div>
+      </nav>
     </section>
   );
 }

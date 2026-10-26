@@ -1,165 +1,102 @@
-import { useState } from "react";
-import { Globe, Github, Download, Send, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-export type ProjectDomain = "All" | "Speech AI" | "Audio Systems" | "Web & SaaS" | "Mobile & Bots";
-
-interface ProjectItem {
+interface FeaturedProject {
   title: string;
-  domain: Exclude<ProjectDomain, "All">;
-  date: string;
+  subtitle: string;
   description: string;
   tech: string[];
   image: string;
-  links: {
-    label: string;
-    href: string;
-    icon: "globe" | "github" | "download" | "send";
-  }[];
+  links: { label: string; href: string }[];
 }
 
-const DOMAINS: ProjectDomain[] = ["All", "Speech AI", "Audio Systems", "Web & SaaS", "Mobile & Bots"];
+interface CompactProject {
+  title: string;
+  description: string;
+  links: { label: string; href: string }[];
+}
 
-const projects: ProjectItem[] = [
+const featured: FeaturedProject[] = [
   {
-    title: "Weg (ወግ) — AI Meeting Intelligence",
-    domain: "Audio Systems",
-    date: "October 2026",
+    title: "Weg (ወግ)",
+    subtitle: "AI Meeting Intelligence",
     description:
-      "Client-side AI meeting notes assistant for Google Meet and Android. Captures tab and system audio directly without bot participants, streams 5-second sequential audio chunks, and transcribes Amharic and Amharic-English bilingual speech using Gemini 2.5 Flash and Hohe ASR to generate structured summaries and action items.",
-    tech: ["Chrome MV3", "Android (Kotlin)", "Python", "FastAPI", "Gemini 2.5 Flash", "Hohe ASR", "Tailwind CSS"],
+      "Client-side meeting notes for Google Meet and Android. Captures tab audio directly without bot participants, streams 5-second chunks, and transcribes Amharic and bilingual speech via Gemini 2.5 Flash and Hohe ASR to generate structured summaries and action items.",
+    tech: ["Chrome MV3", "Android Kotlin", "FastAPI", "Gemini 2.5 Flash", "Hohe ASR"],
     image: "/weg-cover.jpg",
     links: [
-      { label: "Live Site", href: "https://weg.ermizamr.tech", icon: "globe" },
-      { label: "Source Code", href: "https://github.com/ermizamr/amharic-notebook", icon: "github" },
+      { label: "Live", href: "https://weg.ermizamr.tech" },
+      { label: "Source", href: "https://github.com/ermizamr/amharic-notebook" },
     ],
   },
   {
-    title: "LISAN (ልሳን) — Offline Speech-to-Speech Mobile App",
-    domain: "Speech AI",
-    date: "October 2026",
+    title: "LISAN (ልሳን)",
+    subtitle: "Offline Speech-to-Speech",
     description:
-      "Offline speech-to-speech translation mobile application for Ethiopian and Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali, English). Runs genuine on-device VITS MMS-TTS and quantized NLLB-200 via zero-copy C++ FFI decoding, operating completely without an internet connection within a strict 350MB RAM limit.",
-    tech: ["Flutter", "Dart", "C++ FFI", "ONNX Runtime", "VITS MMS-TTS", "NLLB-200"],
+      "On-device translation across Amharic, Afaan Oromoo, Tigrinya, Somali, and English. Runs VITS MMS-TTS and quantized NLLB-200 via zero-copy C++ FFI decoding, fully offline within a 350MB RAM limit.",
+    tech: ["Flutter", "C++ FFI", "ONNX Runtime", "VITS MMS-TTS", "NLLB-200"],
     image: "/lisan-mobile-cover.jpg",
     links: [
-      { label: "Download APK", href: "https://lisan.ermizamr.tech/lisan-app.apk", icon: "download" },
-      { label: "Product Landing", href: "https://lisan.ermizamr.tech", icon: "globe" },
-      { label: "Source Code", href: "https://github.com/ermizamr/LISAN", icon: "github" },
+      { label: "Download APK", href: "https://lisan.ermizamr.tech/lisan-app.apk" },
+      { label: "Landing Page", href: "https://lisan.ermizamr.tech" },
+      { label: "Source", href: "https://github.com/ermizamr/LISAN" },
+    ],
+  },
+];
+
+const compact: CompactProject[] = [
+  {
+    title: "LISAN Validation Hub",
+    description:
+      "Crowdsourced validation for Ethiopian language bitext. Gamified Telegram bot with XP leaderboards and a web verification suite powering 373K+ pairs.",
+    links: [
+      { label: "Web Hub", href: "https://lisan.ermizamr.tech/validate.html" },
+      { label: "Bot", href: "https://t.me/LisanAiEtBot" },
+      { label: "Source", href: "https://github.com/ermizamr/LISAN" },
     ],
   },
   {
-    title: "LISAN AI Community Validation Hub",
-    domain: "Speech AI",
-    date: "October 2026",
+    title: "USDENT",
     description:
-      "Crowdsourced micro-task validation ecosystem and open-source benchmark dataset builder for Ethiopian languages. Features a gamified Telegram bot with real-time XP leaderboards and a web verification suite powering 373K+ bitext pairs.",
-    tech: ["Python", "FastAPI", "Supabase", "PostgreSQL", "Telegram Bot API", "Tailwind CSS"],
-    image: "/lisan.jpg",
+      "B2B SaaS automating dental insurance appeal workflows for US clinics. Multi-tenant Django backend with role-based access and automated letter generation.",
     links: [
-      { label: "Web Hub", href: "https://lisan.ermizamr.tech/validate.html", icon: "globe" },
-      { label: "Telegram Bot", href: "https://t.me/LisanAiEtBot", icon: "send" },
-      { label: "Source Code", href: "https://github.com/ermizamr/LISAN", icon: "github" },
-    ],
-  },
-  {
-    title: "USDENT — Insurance Appeals Builder",
-    domain: "Web & SaaS",
-    date: "January 2026",
-    description:
-      "B2B SaaS platform automating dental insurance appeal workflows for US dental clinics. Includes a multi-tenant Django/PostgreSQL backend, role-based access control, and automated appeal letter generation.",
-    tech: ["Django", "React", "PostgreSQL", "REST APIs"],
-    image: "/usdent.jpg",
-    links: [
-      { label: "Live Demo", href: "https://usdent-appeal-builder.vercel.app", icon: "globe" },
-      { label: "Source Code", href: "https://github.com/ermizamr/usdent-appeal-builder", icon: "github" },
+      { label: "Demo", href: "https://usdent-appeal-builder.vercel.app" },
+      { label: "Source", href: "https://github.com/ermizamr/usdent-appeal-builder" },
     ],
   },
   {
     title: "TG-Teacher Bot",
-    domain: "Mobile & Bots",
-    date: "March 2026",
     description:
-      "AI-powered Telegram bot for space science and STEM learners with persistent context and memory stored via Supabase PostgreSQL.",
-    tech: ["Python", "Groq API", "Supabase", "Telegram Bot API"],
-    image: "/tgteacherbot.jpg",
+      "AI Telegram tutor for space science and STEM learners with persistent context stored via Supabase.",
     links: [
-      { label: "Try Bot", href: "https://t.me/erzamrbot", icon: "send" },
-      { label: "Source Code", href: "https://github.com/ermizamr/ai-tg-bot", icon: "github" },
+      { label: "Try it", href: "https://t.me/erzamrbot" },
+      { label: "Source", href: "https://github.com/ermizamr/ai-tg-bot" },
     ],
   },
   {
     title: "Space For ET",
-    domain: "Mobile & Bots",
-    date: "April 2026",
     description:
-      "Mobile application tracking Ethiopia's space science initiatives, live rocket launches, and satellite pass schedules.",
-    tech: ["Flutter", "Dart", "REST APIs"],
-    image: "/space-et-2.jpg",
+      "Mobile app tracking Ethiopia's space science initiatives, rocket launches, and satellite passes.",
     links: [
-      { label: "Download APK", href: "https://github.com/ermizamr/SPACE-FOR-ET-APK/releases", icon: "download" },
-      { label: "Source Code", href: "https://github.com/ermizamr/SPACE-FOR-ET-APK", icon: "github" },
+      { label: "APK", href: "https://github.com/ermizamr/SPACE-FOR-ET-APK/releases" },
+      { label: "Source", href: "https://github.com/ermizamr/SPACE-FOR-ET-APK" },
     ],
   },
 ];
 
 export function Projects() {
-  const [selectedDomain, setSelectedDomain] = useState<ProjectDomain>("All");
-
-  const filteredProjects =
-    selectedDomain === "All"
-      ? projects
-      : projects.filter((project) => project.domain === selectedDomain);
-
   return (
-    <section id="projects" aria-label="Projects" className="space-y-6">
-      <div className="space-y-3">
-        <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-bold tracking-tight text-foreground">Projects</h2>
-          <span className="text-xs text-muted-foreground font-mono">
-            {filteredProjects.length} {filteredProjects.length === 1 ? "project" : "projects"}
-          </span>
-        </div>
+    <section id="projects" aria-label="Projects" className="space-y-8">
+      <h2 className="text-xl font-bold tracking-tight">Projects</h2>
 
-        {/* Domain Filter Pills — differing projects by domain per user specification */}
-        <div
-          role="tablist"
-          aria-label="Filter projects by domain"
-          className="flex flex-wrap items-center gap-1.5 pt-1"
-        >
-          {DOMAINS.map((domain) => {
-            const count = domain === "All" ? projects.length : projects.filter((p) => p.domain === domain).length;
-            const isSelected = selectedDomain === domain;
-            return (
-              <button
-                key={domain}
-                type="button"
-                role="tab"
-                aria-selected={isSelected}
-                onClick={() => setSelectedDomain(domain)}
-                className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-md transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
-                  isSelected
-                    ? "bg-foreground text-background font-medium"
-                    : "border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                }`}
-              >
-                <span>{domain}</span>
-                <span className={`text-[10px] ${isSelected ? "opacity-80" : "opacity-60"}`}>
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
+      {/* Featured projects — full cards with images */}
       <div className="space-y-6">
-        {filteredProjects.map((project) => (
+        {featured.map((project) => (
           <article
             key={project.title}
-            className="border border-border rounded-xl overflow-hidden bg-card transition-colors"
+            className="border border-border rounded-xl overflow-hidden bg-card"
           >
-            <div className="aspect-[16/9] sm:aspect-[2/1] bg-muted overflow-hidden">
+            <div className="aspect-[2/1] bg-muted overflow-hidden">
               <ImageWithFallback
                 src={project.image}
                 alt={project.title}
@@ -167,55 +104,66 @@ export function Projects() {
               />
             </div>
             <div className="p-5 sm:p-6 space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1.5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="font-bold text-base sm:text-lg text-foreground">{project.title}</h3>
-                  <span className="text-[11px] font-medium px-2 py-0.5 rounded border border-border bg-muted/40 text-muted-foreground">
-                    {project.domain}
-                  </span>
-                </div>
-                <span className="text-xs text-muted-foreground font-mono shrink-0">{project.date}</span>
+              <div>
+                <h3 className="font-bold text-lg">{project.title}</h3>
+                <p className="text-sm text-muted-foreground">{project.subtitle}</p>
               </div>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-1.5 pt-1">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-xs px-2 py-0.5 rounded-md border border-border bg-muted/40 text-muted-foreground"
+                    className="text-xs px-2 py-0.5 rounded-md border border-border text-muted-foreground"
                   >
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="flex flex-wrap items-center gap-2 pt-2">
-                {project.links.map((link) => {
-                  const Icon =
-                    link.icon === "download"
-                      ? Download
-                      : link.icon === "send"
-                      ? Send
-                      : link.icon === "github"
-                      ? Github
-                      : Globe;
-                  return (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 border border-border rounded-lg hover:bg-muted transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
-                    >
-                      <Icon className="size-3.5" />
-                      {link.label}
-                      <ArrowUpRight className="size-3 opacity-60" />
-                    </a>
-                  );
-                })}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-sm">
+                {project.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-foreground font-medium hover:opacity-70 transition-opacity"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="size-3.5" />
+                  </a>
+                ))}
               </div>
             </div>
           </article>
+        ))}
+      </div>
+
+      {/* Other projects — compact text rows */}
+      <div className="divide-y divide-border border-t border-border">
+        {compact.map((project) => (
+          <div key={project.title} className="py-4 space-y-1.5">
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h3 className="font-semibold text-sm">{project.title}</h3>
+              <div className="flex items-center gap-3 shrink-0">
+                {project.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              {project.description}
+            </p>
+          </div>
         ))}
       </div>
     </section>
