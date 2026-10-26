@@ -4,9 +4,10 @@ const SITE_URL = "https://www.ermizamr.tech";
 const FULL_NAME = "Ermyas Misiker";
 const TITLE = "Ermyas Misiker | Full-Stack Developer & Founder | ermizamr.tech";
 const DESCRIPTION =
-  "Ermyas Misiker (ermizamr) is a full-stack developer and founder from Addis Ababa, Ethiopia. Creator of LISAN AI (offline speech-to-speech Ethiopian translation) and USDENT. Expert in Django, React, Flutter, Python, and Supabase. Building B2B SaaS platforms, AI Telegram bots, and mobile apps. Available for freelance and collaboration.";
+  "Ermyas Misiker (ermizamr) is a full-stack developer and founder from Addis Ababa, Ethiopia. Creator of Weg AI (Amharic AI meeting assistant), LISAN AI (offline speech-to-speech Ethiopian translation), and USDENT. Expert in Django, React, Flutter, Python, and Supabase. Building B2B SaaS platforms, AI Telegram bots, and mobile apps. Available for freelance and collaboration.";
 const KEYWORDS = [
   "Ermyas Misiker", "Ermias Misiker", "Ermyas", "Ermias", "Misiker", "ermizamr",
+  "Weg", "Weg AI", "ወግ", "Amharic AI meeting assistant", "Ethiopian meeting notes",
   "LISAN", "LISAN AI", "Ethiopian AI", "Amharic translation", "Speech-to-Speech translation",
   "website developer", "developer", "fullstack developer", "full-stack developer",
   "coder", "coding", "tech", "Ethiopia", "Ethiopian developer", "Ethiopian coder",

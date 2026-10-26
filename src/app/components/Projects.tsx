@@ -21,6 +21,20 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Weg (ወግ) AI Meeting Assistant",
+    date: "October 2026",
+    description: "Client-side AI meeting notes assistant for Google Meet and Android companion devices, engineered specifically for Amharic and Amharic-English bilingual code-switching. Captures tab and system audio directly without intruding bot participants, streams 5s sequential audio chunks, and leverages Gemini 2.5 Flash with Hohe ASR to deliver instant executive summaries, key decisions, and structured action items.",
+    tech: ["Chrome Extension (MV3)", "Android (Kotlin)", "Python", "FastAPI", "Gemini 2.5 Flash", "Hohe ASR", "Tailwind CSS"],
+    image: "/weg-cover.jpg",
+    screenshots: [
+      "/weg-screen-1.png",
+      "/weg-screen-2.png",
+    ],
+    live: "https://weg.ermizamr.tech",
+    liveLabel: "Website",
+    github: "https://github.com/ermizamr/amharic-notebook",
+  },
+  {
     name: "LISAN (ልሳን) Mobile App",
     date: "October 2026",
     description: "Offline-first real-time speech-to-speech translation mobile application for Ethiopian & Horn languages (Amharic, Afaan Oromoo, Tigrinya, Somali, English). Powered by 100% genuine on-device VITS neural TTS and quantized NLLB-200 via C++ FFI zero-copy decoding, operating completely without internet within a strict 350MB RAM limit.",

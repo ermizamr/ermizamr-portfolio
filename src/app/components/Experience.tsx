@@ -1,5 +1,13 @@
 const experiences = [
   {
+    initial: "W",
+    color: "bg-lime-100 text-lime-800",
+    company: "Weg (ወግ) AI",
+    role: "Founder & Lead Architect",
+    period: "Oct 2026 – Present",
+    description: "Architected a client-side Amharic AI meeting intelligence assistant spanning a Manifest V3 Chrome Extension and Kotlin Android companion app. Implemented real-time audio chunk streaming, Gemini 2.5 Flash summarization, and Hohe ASR integration.",
+  },
+  {
     initial: "L",
     color: "bg-amber-100 text-amber-700",
     company: "LISAN (ልሳን) AI",
